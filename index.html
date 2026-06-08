@@ -4,70 +4,136 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Casting Karma LLC — technology & AI solutions</title>
-<meta name="description" content="Casting Karma LLC is an independent company focused on technology and AI solutions.">
+<meta name="description" content="Casting Karma LLC is an independent company building software for real-world problems.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0e1630; --ink2:#5b6576; --soft:#f6f7fb; --line:#e7e9f0; --white:#ffffff;
-    --gold:#c2932f; --gold-hi:#d9b65a;
+    --ink:#070b15; --ink-2:#0b1120; --panel:#0f1626; --panel-2:#0c1320;
+    --line:rgba(255,255,255,.075); --line-2:rgba(255,255,255,.14);
+    --gold:#d9b65a; --gold-2:#c2932f; --gold-soft:rgba(217,182,90,.13);
+    --text:#f4f6fb; --muted:#a3b0c6; --muted-2:#6c7a92;
+    --maxw:1080px;
   }
-  *{box-sizing:border-box}
+  *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{margin:0;color:var(--ink);background:var(--white);
-    font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    -webkit-font-smoothing:antialiased;line-height:1.65;font-weight:400}
+  body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:var(--ink);color:var(--text);-webkit-font-smoothing:antialiased;
+    line-height:1.65;font-weight:400;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:940px;margin:0 auto;padding:0 26px}
-  .mark{flex:0 0 auto}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
-  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  /* header */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(160%) blur(14px);
+    background:rgba(7,11,21,.66);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
   .brand{display:flex;align-items:center;gap:13px}
-  .wm{font-size:19px;font-weight:300;letter-spacing:.3px;color:var(--ink)}
+  .wm{font-size:18px;font-weight:300;letter-spacing:.3px;color:var(--text)}
   .wm b{font-weight:700;color:var(--gold)}
-  .wm .llc{font-size:11px;font-weight:500;letter-spacing:2px;color:var(--ink2);display:block;margin-top:-4px}
-  .nav .links a{font-size:14px;font-weight:500;color:var(--ink2)}
-  .nav .links a:hover{color:var(--ink)}
+  .wm .llc{font-size:10.5px;font-weight:500;letter-spacing:2px;color:var(--muted-2);display:block;margin-top:-5px}
+  .nav-cta{font-size:13.5px;font-weight:500;color:var(--text);border:1px solid var(--line-2);
+    padding:9px 17px;border-radius:9px;transition:.2s;background:rgba(255,255,255,.02)}
+  .nav-cta:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
 
-  /* Hero */
-  .hero{background:radial-gradient(120% 140% at 80% 0%,#1a2547 0%,#0e1630 55%,#0a0f22 100%);color:#fff;position:relative;overflow:hidden}
-  .hero .wrap{padding:120px 26px 128px;position:relative;z-index:2}
-  .hero .ripple-bg{position:absolute;right:-150px;top:-110px;width:600px;height:600px;opacity:.15;z-index:1}
-  .eyebrow{font-size:12px;font-weight:600;letter-spacing:3px;color:var(--gold-hi);margin:0 0 24px}
-  .hero h1{font-size:48px;line-height:1.12;font-weight:600;letter-spacing:-.7px;margin:0 0 24px;max-width:740px}
-  .hero h1 .g{color:var(--gold-hi)}
-  .hero p{font-size:19px;font-weight:300;color:#c4cce0;max-width:560px;margin:0 0 34px;line-height:1.7}
-  .cta{display:inline-block;font-weight:600;font-size:15px;color:var(--ink);background:var(--gold-hi);padding:13px 26px;border-radius:10px}
-  .cta:hover{background:#e6c97a}
-  @media(max-width:560px){.hero h1{font-size:33px}.hero .wrap{padding:84px 26px 92px}}
+  /* hero */
+  .hero{position:relative;padding:122px 0 116px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+  .glow{position:absolute;width:820px;height:820px;border-radius:50%;
+    background:radial-gradient(circle,rgba(217,182,90,.15),rgba(217,182,90,0) 60%);
+    top:-300px;right:-180px}
+  .glow.b{width:560px;height:560px;left:-220px;bottom:-300px;
+    background:radial-gradient(circle,rgba(60,100,180,.16),rgba(60,100,180,0) 62%)}
+  .grid-tex{position:absolute;inset:0;opacity:.55;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:60px 60px;
+    -webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 0%,#000 28%,transparent 72%);
+    mask-image:radial-gradient(ellipse 75% 65% at 50% 0%,#000 28%,transparent 72%)}
+  .ripple-bg{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:560px;height:560px;opacity:.4}
+  .hero .wrap{position:relative;z-index:2}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--line-2);padding:7px 15px;border-radius:100px;
+    background:rgba(255,255,255,.025);margin-bottom:30px}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
+  h1{font-size:clamp(42px,6.2vw,74px);line-height:1.04;letter-spacing:-.025em;
+    font-weight:600;max-width:15ch}
+  h1 .g{color:var(--gold)}
+  .lede{margin-top:26px;font-size:clamp(17px,2vw,20px);font-weight:300;color:var(--muted);
+    max-width:48ch;line-height:1.6}
+  .cta-row{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;
+    padding:14px 26px;border-radius:11px;transition:.22s;cursor:pointer}
+  .btn-gold{background:linear-gradient(180deg,#e6c97a,var(--gold));color:#1a1408;
+    box-shadow:0 8px 30px rgba(217,182,90,.22),inset 0 1px 0 rgba(255,255,255,.4)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(217,182,90,.34)}
+  .btn-gold svg{transition:transform .22s}
+  .btn-gold:hover svg{transform:translateX(3px)}
+  .btn-ghost{color:var(--text);border:1px solid var(--line-2);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 
-  /* Focus statement */
-  .focus{padding:92px 0 84px}
-  .focus .lede{font-size:13px;font-weight:600;letter-spacing:2.5px;color:var(--gold);margin:0 0 18px}
-  .focus h2{font-size:32px;font-weight:600;letter-spacing:-.4px;margin:0 0 18px;line-height:1.2;max-width:680px}
-  .focus p{font-size:19px;font-weight:300;color:#3a4258;max-width:680px;margin:0;line-height:1.75}
-  .areas{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-  .area{border:1px solid var(--line);border-radius:14px;padding:24px 22px;background:#fcfcfd}
-  .area .ic{width:30px;height:30px;margin-bottom:14px}
-  .area h3{font-size:16px;font-weight:600;margin:0 0 8px;color:var(--ink)}
-  .area p{font-size:14.5px;font-weight:400;color:var(--ink2);margin:0;line-height:1.65;max-width:none}
-  @media(max-width:720px){.areas{grid-template-columns:1fr;gap:16px}}
+  /* trust strip */
+  .strip{border-bottom:1px solid var(--line);background:var(--ink-2)}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:11px 38px;justify-content:center;
+    padding:22px 28px;font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--muted-2)}
+  .strip span{display:inline-flex;align-items:center;gap:9px}
+  .strip span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.75}
 
-  /* Contact */
-  .contact{padding:0 0 96px}
-  .contact .card{background:radial-gradient(120% 160% at 85% 0%,#1a2547,#0e1630);color:#fff;border-radius:20px;padding:60px 48px;text-align:center;position:relative;overflow:hidden}
-  .contact .card .ripple-bg{position:absolute;left:-130px;bottom:-170px;width:430px;height:430px;opacity:.13}
-  .contact h2{color:#fff;position:relative;z-index:2;font-size:28px;font-weight:600;margin:0 0 14px}
-  .contact p{color:#c4cce0;font-weight:300;max-width:480px;margin:0 auto 26px;position:relative;z-index:2}
-  .contact a.email{position:relative;z-index:2;font-size:20px;font-weight:600;color:var(--gold-hi);border-bottom:2px solid rgba(217,182,90,.5);padding-bottom:3px}
-  .contact a.email:hover{border-color:var(--gold-hi)}
+  /* sections */
+  section{padding:106px 0}
+  .sec-head{max-width:640px;margin-bottom:54px}
+  .kicker{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);margin-bottom:16px}
+  h2{font-size:clamp(29px,3.5vw,40px);line-height:1.12;letter-spacing:-.02em;font-weight:600}
+  .sec-head p{margin-top:18px;color:var(--muted);font-size:17.5px;font-weight:300;line-height:1.65}
 
-  footer{padding:30px 0;border-top:1px solid var(--line)}
-  .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--ink2);font-size:13px}
-  .foot .wm{font-size:15px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{position:relative;background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:18px;padding:34px 30px 36px;overflow:hidden;transition:.26s}
+  .card::before{content:"";position:absolute;inset:0;border-radius:18px;padding:1px;
+    background:linear-gradient(180deg,rgba(217,182,90,.55),transparent 42%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:.26s}
+  .card:hover{transform:translateY(-5px);border-color:transparent;box-shadow:0 24px 52px rgba(0,0,0,.55)}
+  .card:hover::before{opacity:1}
+  .ic{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+    background:var(--gold-soft);border:1px solid rgba(217,182,90,.26);margin-bottom:24px}
+  .ic svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:12px}
+  .card p{color:var(--muted);font-size:15px;font-weight:300;line-height:1.65}
+
+  /* contact */
+  .contact .panel{position:relative;border-radius:24px;overflow:hidden;
+    background:linear-gradient(135deg,#101a2e,#0a1120);border:1px solid var(--line);
+    padding:74px 56px;text-align:center}
+  .contact .ripple-bg{left:-120px;bottom:-180px;top:auto;right:auto;transform:none;width:420px;height:420px;opacity:.16}
+  .contact .panel>*{position:relative;z-index:2}
+  .contact .kicker{color:var(--gold-2)}
+  .contact p{color:var(--muted);font-size:17.5px;font-weight:300;margin:18px auto 34px;max-width:44ch}
+  .mailchip{display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:16px;color:#1a1408;
+    background:linear-gradient(180deg,#e6c97a,var(--gold));padding:15px 28px;border-radius:12px;
+    transition:.22s;box-shadow:0 8px 30px rgba(217,182,90,.24)}
+  .mailchip:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(217,182,90,.36)}
+  .mailchip svg{width:18px;height:18px;stroke:#1a1408;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:38px 0;background:var(--ink-2)}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer .wm{font-size:15px}
+  footer small{color:var(--muted-2);font-size:13px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:820px){
+    .cards{grid-template-columns:1fr}
+    .ripple-bg{display:none}
+    .hero{padding:84px 0 74px}
+    section{padding:78px 0}
+    .contact .panel{padding:52px 26px}
+  }
 </style>
 </head>
 <body>
@@ -75,7 +141,7 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top">
-      <svg class="mark" width="38" height="38" viewBox="0 0 100 100" aria-label="Casting Karma">
+      <svg width="38" height="38" viewBox="0 0 100 100" aria-label="Casting Karma">
         <g fill="none" stroke-linecap="round" transform="rotate(152 46 50)">
           <circle cx="46" cy="50" r="15" stroke="#c2932f" stroke-width="5" stroke-dasharray="71 24"/>
           <circle cx="46" cy="50" r="25" stroke="#cda64f" stroke-width="4.2" stroke-dasharray="118 40"/>
@@ -85,46 +151,70 @@
       </svg>
       <span class="wm">Casting <b>Karma</b><span class="llc">LLC</span></span>
     </a>
-    <nav class="links"><a href="#contact">Contact</a></nav>
+    <a class="nav-cta" href="mailto:contact@castingkarmallc.com">Get in touch</a>
   </div>
 </header>
 
-<div id="top" class="hero">
-  <svg class="ripple-bg" viewBox="0 0 100 100">
-    <g fill="none" stroke-linecap="round" stroke="#d9b65a" transform="rotate(152 46 50)">
-      <circle cx="46" cy="50" r="15" stroke-width="3" stroke-dasharray="71 24"/>
-      <circle cx="46" cy="50" r="25" stroke-width="2.6" stroke-dasharray="118 40"/>
-      <circle cx="46" cy="50" r="35" stroke-width="2.2" stroke-dasharray="165 56"/>
-      <circle cx="46" cy="50" r="45" stroke-width="1.8" stroke-dasharray="212 71"/>
-    </g>
-    <circle cx="46" cy="50" r="6" fill="#d9b65a"/>
-  </svg>
+<a id="top"></a>
+<section class="hero">
+  <div class="hero-bg">
+    <div class="grid-tex"></div>
+    <div class="glow"></div>
+    <div class="glow b"></div>
+    <svg class="ripple-bg" viewBox="0 0 100 100">
+      <g fill="none" stroke-linecap="round" stroke="#d9b65a" transform="rotate(152 46 50)">
+        <circle cx="46" cy="50" r="15" stroke-width="3" stroke-dasharray="71 24"/>
+        <circle cx="46" cy="50" r="25" stroke-width="2.6" stroke-dasharray="118 40"/>
+        <circle cx="46" cy="50" r="35" stroke-width="2.2" stroke-dasharray="165 56"/>
+        <circle cx="46" cy="50" r="45" stroke-width="1.8" stroke-dasharray="212 71"/>
+      </g>
+      <circle cx="46" cy="50" r="6" fill="#d9b65a"/>
+    </svg>
+  </div>
   <div class="wrap">
-    <p class="eyebrow">CASTING KARMA LLC</p>
+    <span class="eyebrow"><span class="dot"></span> Casting Karma LLC</span>
     <h1>Technology and <span class="g">AI</span> solutions.</h1>
-    <p>An independent company building software for real-world problems.</p>
-    <a class="cta" href="#contact">Get in touch</a>
+    <p class="lede">An independent company building software for real-world problems.</p>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="mailto:contact@castingkarmallc.com">
+        Get in touch
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#work">What we do</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span>Independent</span>
+    <span>U.S.-based</span>
+    <span>Privacy-first</span>
+    <span>Built with modern AI</span>
+    <span>Quality over volume</span>
   </div>
 </div>
 
-<section class="focus">
+<section id="work">
   <div class="wrap">
-    <p class="lede">WHAT WE DO</p>
-    <h2>We design and build practical software.</h2>
-    <p>Casting Karma is an independent technology company. We build focused products and tools — with technology and artificial intelligence at the center of the work.</p>
-    <div class="areas">
-      <div class="area">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#c2932f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+    <div class="sec-head reveal">
+      <div class="kicker">What we do</div>
+      <h2>We design and build practical software.</h2>
+      <p>Casting Karma is an independent technology company. We build focused products and tools — with technology and artificial intelligence at the center of the work.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
         <h3>Software products</h3>
         <p>Focused web and platform apps, designed to be simple to use.</p>
       </div>
-      <div class="area">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#c2932f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M5 12H2M22 12h-3M6 6l-2-2M20 20l-2-2M6 18l-2 2M20 4l-2 2"/><circle cx="12" cy="12" r="4"/></svg>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M5 12H2M22 12h-3M6 6l-2-2M20 20l-2-2M6 18l-2 2M20 4l-2 2"/><circle cx="12" cy="12" r="4"/></svg></div>
         <h3>AI &amp; automation</h3>
         <p>Applying AI to cut busywork and streamline everyday workflows.</p>
       </div>
-      <div class="area">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#c2932f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></div>
         <h3>Marketplace apps</h3>
         <p>Tools that work inside the platforms teams already rely on.</p>
       </div>
@@ -132,9 +222,9 @@
   </div>
 </section>
 
-<section id="contact" class="contact">
+<section class="contact" id="contact">
   <div class="wrap">
-    <div class="card">
+    <div class="panel reveal">
       <svg class="ripple-bg" viewBox="0 0 100 100">
         <g fill="none" stroke-linecap="round" stroke="#d9b65a" transform="rotate(152 46 50)">
           <circle cx="46" cy="50" r="15" stroke-width="3" stroke-dasharray="71 24"/>
@@ -143,19 +233,28 @@
         </g>
         <circle cx="46" cy="50" r="6" fill="#d9b65a"/>
       </svg>
-      <h2>Get in touch</h2>
+      <div class="kicker">Get in touch</div>
+      <h2>Have an idea or a question?</h2>
       <p>Questions or ideas — we read every message.</p>
-      <a class="email" href="mailto:jaminaustin.ai@gmail.com">jaminaustin.ai@gmail.com</a>
+      <a class="mailchip" href="mailto:contact@castingkarmallc.com">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        contact@castingkarmallc.com
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap foot">
-    <span class="wm">Casting <b style="color:var(--gold)">Karma</b> <span style="color:var(--ink2);font-weight:500">LLC</span></span>
-    <span>© <span id="yr"></span> Casting Karma LLC · United States</span>
+  <div class="wrap">
+    <span class="wm">Casting <b style="color:var(--gold)">Karma</b> <span style="color:var(--muted-2);font-weight:500">LLC</span></span>
+    <small>© <span id="yr"></span> Casting Karma LLC · United States</small>
   </div>
 </footer>
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+<script>
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.16});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.08+'s';io.observe(el)});
+</script>
 </body>
 </html>
